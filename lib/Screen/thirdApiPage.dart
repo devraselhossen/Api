@@ -1,17 +1,18 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../Model/thirdModel.dart';
 
 class ThirdApiPage extends StatefulWidget {
-  const ThirdApiPage({ Key? key }) : super(key: key);
+  const ThirdApiPage({Key? key}) : super(key: key);
 
   @override
   State<ThirdApiPage> createState() => _ThirdApiPageState();
 }
 
 class _ThirdApiPageState extends State<ThirdApiPage> {
-
   List<String> data = [];
 
   @override
@@ -48,18 +49,21 @@ class _ThirdApiPageState extends State<ThirdApiPage> {
         child: Column(
           children: [
             Flexible(
-              child: ListView.builder(
-                shrinkWrap: true,
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    final use = data[index];
-                    return Card(
-                      elevation: 5,
-                      child: ListTile(
-                        title: Text(use),
-                      )
-                    );
-                  }),
+              child: data.isNotEmpty
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: data.length,
+                      itemBuilder: (context, index) {
+                        final use = data[index];
+                        return Card(
+                            elevation: 5,
+                            child: ListTile(
+                              title: Text(use),
+                            ));
+                      })
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    ),
             ),
           ],
         ),

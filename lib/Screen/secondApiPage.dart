@@ -38,62 +38,69 @@ class _SecondApiPageState extends State<SecondApiPage> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Card(
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: InkWell(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                      child: Container(
-                                margin: EdgeInsets.only(bottom: 15),
-                                child: Image.network(snapshot.data!.image,height: 100,width: 100,),
-                              ),),
-                                  SizedBox(
-                                    height: 10,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: InkWell(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Center(
+                                child: Container(
+                                  margin: EdgeInsets.only(bottom: 15),
+                                  child: Image.network(
+                                    snapshot.data!.image,
+                                    height: 100,
+                                    width: 100,
                                   ),
-                                  Text(
-                                    "Title : " + snapshot.data!.title + ".",
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: GoogleFonts.lato(
-                                        textStyle: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                    )),
-                                  ),
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text(
-                                    "Categories : " +
-                                        snapshot.data!.category.toLowerCase() +
-                                        ".",
-                                    style: GoogleFonts.volkhov(
-                                        textStyle: TextStyle(
-                                      fontWeight: FontWeight.w200,
-                                    )),
-                                  ),
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text(
-                                    "Price : " + snapshot.data!.price.toString() + " TK.",
-                                    style: GoogleFonts.lobsterTwo(
-                                        textStyle: TextStyle(
-                                      fontWeight: FontWeight.w200,
-                                    )),
-                                  ),
-                                  SizedBox(
-                                    height: 7,
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ));
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Title : " + snapshot.data!.title + ".",
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                )),
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                "Categories : " +
+                                    snapshot.data!.category.toLowerCase() +
+                                    ".",
+                                style: GoogleFonts.volkhov(
+                                    textStyle: TextStyle(
+                                  fontWeight: FontWeight.w200,
+                                )),
+                              ),
+                              SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                "Price : " +
+                                    snapshot.data!.price.toString() +
+                                    " TK.",
+                                style: GoogleFonts.lobsterTwo(
+                                    textStyle: TextStyle(
+                                  fontWeight: FontWeight.w200,
+                                )),
+                              ),
+                              SizedBox(
+                                height: 7,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ));
                 } else
                   return Center(child: CircularProgressIndicator());
               },

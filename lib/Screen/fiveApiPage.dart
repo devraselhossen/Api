@@ -50,75 +50,81 @@ class _FiveApiPageState extends State<FiveApiPage> {
         child: Column(
           children: [
             Flexible(
-              child: GridView.builder(
-                    shrinkWrap: true,
-                    itemCount: data.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 2 / 2.7,
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 4.0,
-                        mainAxisSpacing: 4.0),
-                    itemBuilder: (context, index) {
-                      final use = data[index];
-                      return Card(
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: InkWell(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                      child: Image.network(
-                                    use.image,
-                                    height: 100,
-                                    width: 100,
-                                  )),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "Title : " + use.title + ".",
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: GoogleFonts.lato(
-                                        textStyle: TextStyle(
-                                      fontWeight: FontWeight.w700,
+              child: data.isNotEmpty
+                  ? GridView.builder(
+                      shrinkWrap: true,
+                      itemCount: data.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 2 / 2.7,
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 4.0,
+                          mainAxisSpacing: 4.0),
+                      itemBuilder: (context, index) {
+                        final use = data[index];
+                        return Card(
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: InkWell(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Center(
+                                        child: Image.network(
+                                      use.image,
+                                      height: 100,
+                                      width: 100,
                                     )),
-                                  ),
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text(
-                                    "Categories : " +
-                                        use.category.toLowerCase() +
-                                        ".",
-                                    style: GoogleFonts.volkhov(
-                                        textStyle: TextStyle(
-                                      fontWeight: FontWeight.w200,
-                                    )),
-                                  ),
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text(
-                                    "Price : " + use.price.toString() + " TK.",
-                                    style: GoogleFonts.lobsterTwo(
-                                        textStyle: TextStyle(
-                                      fontWeight: FontWeight.w200,
-                                    )),
-                                  ),
-                                  SizedBox(
-                                    height: 7,
-                                  ),
-                                ],
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "Title : " + use.title + ".",
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: GoogleFonts.lato(
+                                          textStyle: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Text(
+                                      "Categories : " +
+                                          use.category.toLowerCase() +
+                                          ".",
+                                      style: GoogleFonts.volkhov(
+                                          textStyle: TextStyle(
+                                        fontWeight: FontWeight.w200,
+                                      )),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Text(
+                                      "Price : " +
+                                          use.price.toString() +
+                                          " TK.",
+                                      style: GoogleFonts.lobsterTwo(
+                                          textStyle: TextStyle(
+                                        fontWeight: FontWeight.w200,
+                                      )),
+                                    ),
+                                    SizedBox(
+                                      height: 7,
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ));
-                    }),
+                            ));
+                      })
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    ),
             ),
           ],
         ),
